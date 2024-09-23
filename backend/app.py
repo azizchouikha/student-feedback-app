@@ -6,7 +6,6 @@ app = Flask(__name__)
 app.secret_key = 'easy_report'
 CORS(app, supports_credentials=True)
 
-# Connexion à la base de données MySQL
 mydb = mysql.connector.connect(
     host='localhost',
     user='root',
