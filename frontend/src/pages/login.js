@@ -13,8 +13,7 @@ const Login = () => {
         try {
             const response = await axios.post('/api/login', { mail: email, password: password });
             console.log('Login successful:', response.data);
-            // Redirige vers la page student_dashboard après une connexion réussie
-            Router.push('/student_dashboard');
+            Router.push('/home');
         } catch (err) {
             setError(err.response?.data?.error || 'Unexpected error occurred');
             console.error('Login failed:', err);

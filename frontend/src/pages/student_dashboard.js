@@ -23,19 +23,32 @@ const StudentDashboard = () => {
         <div>
             <h1>Student Dashboard</h1>
             {error && <p>{error}</p>}
-            <ul>
-                {problems.map((problem, index) => (
-                    <li key={index}>
-                        <p>Salle : {problem.room}</p>
-                        <p>Catégorie du problème : {problem.category}</p>
-                        <p>Type de problème : {problem.type_of_problem}</p>
-                        <p>Description : {problem.description}</p>
-                        <p>Autre : {problem.other}</p>
-                        <p>Remarque : {problem.remark}</p>
-                        <span>Urgency: {problem.urgency}</span>
-                    </li>
-                ))}
-            </ul>
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                    <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salle</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Catégorie</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Autre</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarque</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Urgence</th>
+                    </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                    {problems.map((problem, index) => (
+                        <tr key={index}>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.room}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.category}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.type_of_problem}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.description}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.other}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.remark}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.urgency}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };

@@ -23,7 +23,7 @@ const SubmitProblem = () => {
         try {
             await axios.post('/api/submit_problem', formData);
             alert('Problem submitted successfully');
-            Router.push('/student_dashboard');
+            Router.push('/home');
         } catch (err) {
             alert(err.response?.data?.error || 'Failed to submit the problem');
         }
