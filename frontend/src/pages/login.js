@@ -105,8 +105,7 @@ const Login = () => {
     return (
         <div className={styles.container}>
             <div className={styles.logoContainer}>
-                <Image src="/images/epsi.webp" alt="Logo 1" className={styles.logo} width={150} height={100} />
-                <Image src="/images/thumbnail_LOGO_WIS_and_BLEU_RVB_2_ebf032be37_b9c336f599.webp" alt="Logo 2" className={styles.logo} width={120} height={100} />
+                <Image src="/images/Charte_graphique_Workshop_2024-removebg-preview.webp" alt="Logo 1" className={styles.logo} width={150} height={100} />
             </div>
             <div className={styles.card}>
                 <h1 className={styles.title}>Login</h1>
