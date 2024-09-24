@@ -1,0 +1,78 @@
+/* login.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #E0A6A6, #E2AF79);
+    padding: 2rem;
+    position: relative;
+}
+
+.logoContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 80px; /* Adjust the size as needed */
+    width: 80px;
+    margin-right: 10px; /* Space between the logos */
+}
+
+.card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.errorMessage {
+    color: #ff4d4f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.inputField {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.inputField:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+.button {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #1d4ed8;
+}
