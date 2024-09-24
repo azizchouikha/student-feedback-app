@@ -33,6 +33,7 @@ const StudentDashboard = () => {
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Autre</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarque</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Urgence</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Etat</th>
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -45,6 +46,7 @@ const StudentDashboard = () => {
                             <td className="px-6 py-4 whitespace-nowrap">{problem.other}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{problem.remark}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{problem.urgency}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{problem.state}</td>
                         </tr>
                     ))}
                 </tbody>

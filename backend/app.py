@@ -56,7 +56,7 @@ def student_dashboard():
         # Récupérer les problèmes soumis par l'étudiant connecté
         try:
             curs = mydb.cursor(dictionary=True)
-            sql = """SELECT promotion, room, category, type_of_problem, description, urgency, remark, created_at 
+            sql = """SELECT promotion, room, category, type_of_problem, description, urgency, remark, created_at, state 
                      FROM problems WHERE student_name = %s AND student_surname = %s"""
             curs.execute(sql, (session['name'], session['surname']))
             problems = curs.fetchall()
@@ -87,6 +87,7 @@ def submit_problem():
     other = data.get('other')  # Optionnel, donc pas dans la validation "all"
     urgency = data.get('urgency')
     remark = data.get('remark')
+    state = 'Soumis'
 
     # Validation des champs requis
     if not all([promotion, room, category, type_of_problem, description, urgency, remark]):
@@ -107,9 +108,9 @@ def submit_problem():
 
         # Insertion des données dans la base de données
         sql = """INSERT INTO problems (student_name, student_surname, promotion, room, category, type_of_problem, 
-        description, other, urgency, remark) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        description, other, urgency, remark, state) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
         curs.execute(sql, (user_info['name'], user_info['surname'], promotion, room, category, type_of_problem,
-                           description, other, urgency, remark))
+                           description, other, urgency, remark, state))
         mydb.commit()
         return jsonify({"message": "Problem submitted successfully"}), 200
     except mysql.connector.Error as err:
