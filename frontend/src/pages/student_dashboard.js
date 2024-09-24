@@ -1,9 +1,11 @@
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 
+
 // const StudentDashboard = () => {
 //     const [problems, setProblems] = useState([]);
 //     const [error, setError] = useState('');
+
 
 //     useEffect(() => {
 //         const fetchData = async () => {
@@ -16,8 +18,10 @@
 //             }
 //         };
 
+
 //         fetchData();
 //     }, []);
+
 
 //     return (
 //         <div>
@@ -55,14 +59,17 @@
 //     );
 // };
 
+
 // export default StudentDashboard;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './studentDashboard.module.css';
 
+
 const StudentDashboard = () => {
     const [problems, setProblems] = useState([]);
     const [error, setError] = useState('');
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -75,8 +82,10 @@ const StudentDashboard = () => {
             }
         };
 
+
         fetchData();
     }, []);
+
 
     return (
         <div className={styles.container}>
@@ -93,6 +102,7 @@ const StudentDashboard = () => {
                         <th>Remarque</th>
                         <th>Urgence</th>
                         <th>État</th>
+                        <th>Message de l'Admin</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,6 +116,7 @@ const StudentDashboard = () => {
                             <td>{problem.remark}</td>
                             <td>{problem.urgency}</td>
                             <td>{problem.state}</td>
+                            <td>{problem.message || 'Aucun message pour ce problème'}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -114,5 +125,10 @@ const StudentDashboard = () => {
     );
 };
 
+
 export default StudentDashboard;
+
+
+
+
 
