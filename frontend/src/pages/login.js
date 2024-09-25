@@ -108,7 +108,8 @@ const Login = () => {
                 <Image src="/images/Charte_graphique_Workshop_2024-removebg-preview.webp" alt="Logo 1" className={styles.logo} width={150} height={100} />
             </div>
             <div className={styles.card}>
-                <h1 className={styles.title}>Login</h1>
+                <h1 className={styles.title}>Bienvenue sur
+                EasyReport</h1>
                 {error && <p className={styles.errorMessage}>{error}</p>}
                 <form onSubmit={handleLogin}>
                     <label htmlFor="email" className="block">
@@ -123,7 +124,7 @@ const Login = () => {
                         />
                     </label>
                     <label htmlFor="password" className="block mt-3">
-                        Password
+                        Mot de passe
                         <input
                             type="password"
                             id="password"
@@ -134,10 +135,25 @@ const Login = () => {
                         />
                     </label>
                     <button type="submit" className={styles.button}>
-                        Log In
+                       Se connecter
                     </button>
                 </form>
             </div>
+
+            <Image
+                src="/images/24-removebg-preview.webp"
+                alt="Rectangle Top Right"
+                className={styles.backgroundTopRight}
+                width={1000}
+                height={500}
+            />
+            <Image
+                src="/images/23-removebg-preview.webp"
+                alt="Rectangle Bottom Left"
+                className={styles.backgroundBottomLeft}
+                width={1000}
+                height={500}
+            />
         </div>
     );
 };

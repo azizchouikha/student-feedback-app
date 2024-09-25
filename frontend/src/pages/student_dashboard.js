@@ -63,7 +63,7 @@
 // export default StudentDashboard;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import styles from './studentDashboard.module.css';
+import styles from './dashboard.module.css';
 
 
 const StudentDashboard = () => {
