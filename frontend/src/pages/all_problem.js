@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import styles from './allProblems.module.css'; // Assurez-vous que le chemin est correct
 
 const AllProblem = () => {
     const [problems, setProblems] = useState([]);
@@ -29,7 +30,6 @@ const AllProblem = () => {
             });
 
             if (res.status === 200) {
-                // Mise à jour immédiate de l'état local pour refléter le nouveau nombre de likes et l'état de like
                 let updatedProblems = problems.map(p => {
                     if (p.id === problem.id) {
                         return { ...p, likes: res.data.new_likes, isLiked: res.data.liked };
@@ -45,37 +45,28 @@ const AllProblem = () => {
     };
 
     return (
-        <div>
-            <h1>Tableau de bord Étudiant - Problèmes soumis</h1>
-            {error && <p>{error}</p>}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Salle</th>
-                        <th>Catégorie</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                        <th>Likes</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {problems.map((problem, index) => (
-                        <tr key={index}>
-                            <td>{problem.room}</td>
-                            <td>{problem.category}</td>
-                            <td>{problem.type_of_problem}</td>
-                            <td>{problem.description}</td>
-                            <td>{problem.likes}</td>
-                            <td>
-                                <button onClick={() => toggleLike(problem)}>
-                                    {problem.isLiked ? 'Dislike' : 'Like'}
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Tableau de bord Étudiant - Problèmes soumis</h1>
+            {error && <p className={styles.errorMessage}>{error}</p>}
+            
+            <div className={styles.cardsContainer}>
+                {problems.map((problem, index) => (
+                    <div key={index} className={styles.card}>
+                        <div className={styles.cardContent}>
+                            <p><strong>Salle:</strong> {problem.room}</p>
+                            <p><strong>Catégorie:</strong> {problem.category}</p>
+                            <p><strong>Type:</strong> {problem.type_of_problem}</p>
+                            <p><strong>Description:</strong> {problem.description}</p>
+                        </div>
+                        <div className={styles.likesSection}>
+                            <span className={styles.likesCount}>{problem.likes} Likes</span>
+                            <button onClick={() => toggleLike(problem)} className={styles.likeButton}>
+                                {problem.isLiked ? 'Dislike' : 'Like'}
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

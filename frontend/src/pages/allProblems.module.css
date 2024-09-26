@@ -1,0 +1,92 @@
+/* Container Styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f7f8fc;
+    min-height: 100vh;
+}
+
+/* Title Styles */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Card Container Styles */
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Card Styles */
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Content Styles */
+.cardContent {
+    margin-bottom: 1rem;
+}
+
+.cardContent p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+    color: #555;
+}
+
+/* Likes Section */
+.likesSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.likesCount {
+    font-size: 0.875rem;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.likeButton {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.likeButton:hover {
+    background-color: #1d4ed8;
+}
+
+/* Error Message */
+.errorMessage {
+    color: #e63946;
+    margin-bottom: 1rem;
+    text-align: center;
+}
