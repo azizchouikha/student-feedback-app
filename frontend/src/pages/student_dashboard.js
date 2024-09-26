@@ -63,13 +63,13 @@
 // export default StudentDashboard;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';  // Import useRouter for navigation
 import styles from './dashboard.module.css';
-
 
 const StudentDashboard = () => {
     const [problems, setProblems] = useState([]);
     const [error, setError] = useState('');
-
+    const router = useRouter(); // Use the useRouter hook for navigation
 
     useEffect(() => {
         const fetchData = async () => {
@@ -82,14 +82,16 @@ const StudentDashboard = () => {
             }
         };
 
-
         fetchData();
     }, []);
 
+    const navigateToAllProblems = () => {
+        router.push('/all_problem');  // Navigate to AllProblem page
+    };
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Tableau de bord Etudiant - Problèmes soumis</h1>
+            <h1 className={styles.title}>Tableau de bord Étudiant - Problèmes soumis</h1>
             {error && <p className={styles.error}>{error}</p>}
             <table className={styles.table}>
                 <thead>
@@ -121,10 +123,12 @@ const StudentDashboard = () => {
                     ))}
                 </tbody>
             </table>
+            <button onClick={navigateToAllProblems} className={styles.button}>
+                Voir tous les problèmes
+            </button>
         </div>
     );
 };
-
 
 export default StudentDashboard;
 

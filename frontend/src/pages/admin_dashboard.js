@@ -243,6 +243,7 @@ const AdminDashboard = () => {
                         <th>Description</th>
                         <th>Urgence</th>
                         <th>Statut</th>
+                        <th>Like</th>
                         <th>Message</th>
                         <th>Action</th>
                     </tr>
@@ -269,6 +270,7 @@ const AdminDashboard = () => {
                                         <option value="Problème traité">Problème traité</option>
                                     </select>
                                 </td>
+                                <td>{problem.likes}</td>
                                 <td>
                                     <textarea
                                         value={messages[key]}

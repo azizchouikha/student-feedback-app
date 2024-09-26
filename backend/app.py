@@ -132,7 +132,75 @@ def register():
 
 
  
+@app.route('/api/all_problems', methods=['GET'])
+def all_problems():
+    if 'loggedin' not in session:
+        return jsonify({"error": "Unauthorized access"}), 403
 
+    try:
+        curs = mydb.cursor(dictionary=True)
+        sql = """
+            SELECT id, room, category, type_of_problem, description, other, urgency, state, message, likes
+            FROM problems
+        """
+        curs.execute(sql)
+        problems = curs.fetchall()
+        curs.close()
+
+        return jsonify({"problems": problems}), 200
+
+    except mysql.connector.Error as err:
+        return jsonify({"error": str(err)}), 500
+
+
+ 
+@app.route('/api/toggle_like', methods=['POST'])
+def toggle_like():
+    if 'loggedin' not in session:
+        return jsonify({"error": "Unauthorized access"}), 403
+
+    data = request.json
+    room = data.get('room')
+    category = data.get('category')
+    type_of_problem = data.get('type_of_problem')
+    description = data.get('description')
+    user_id = session['id']
+
+    try:
+        curs = mydb.cursor(dictionary=True)
+        curs.execute("""
+            SELECT id, likes, liked_by FROM problems
+            WHERE room = %s AND category = %s AND type_of_problem = %s AND description = %s
+        """, (room, category, type_of_problem, description))
+        problem = curs.fetchone()
+
+        if not problem:
+            return jsonify({"error": "Problem not found"}), 404
+
+        problem_id = problem['id']
+        liked_by = problem['liked_by']
+        liked_users = liked_by.split(',') if liked_by else []
+        
+        # Toggle like or dislike
+        if str(user_id) in liked_users:
+            liked_users.remove(str(user_id))
+            new_likes = problem['likes'] - 1
+            action = "disliked"
+        else:
+            liked_users.append(str(user_id))
+            new_likes = problem['likes'] + 1
+            action = "liked"
+
+        new_liked_by = ','.join(liked_users)
+        curs.execute("UPDATE problems SET likes = %s, liked_by = %s WHERE id = %s", (new_likes, new_liked_by, problem_id))
+        mydb.commit()
+        curs.close()
+
+        return jsonify({"message": f"Problem {action} successfully", "new_likes": new_likes, "liked": action == "liked"}), 200
+
+    except mysql.connector.Error as err:
+        return jsonify({"error": str(err)}), 500
+    
 
 @app.route('/api/student_dashboard', methods=['GET'])
 
@@ -392,7 +460,7 @@ def admin_dashboard():
             sql = """SELECT student_name, student_surname, promotion, room, category, type_of_problem, description,
 
 
-                     urgency, remark, created_at, state FROM problems"""
+                     urgency, remark, created_at, state, likes FROM problems"""
 
 
             curs.execute(sql)
