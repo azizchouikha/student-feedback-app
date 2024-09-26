@@ -83,7 +83,7 @@ const SubmitProblem = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Submit a Problem</h1>
+            <h1 className={styles.title}>Soumettre un problème</h1>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     type="text"
@@ -147,7 +147,7 @@ const SubmitProblem = () => {
                     className={styles.textareaField}
                 ></textarea>
                 <button type="submit" className={styles.submitButton}>
-                    Submit
+                    Valider
                 </button>
             </form>
         </div>

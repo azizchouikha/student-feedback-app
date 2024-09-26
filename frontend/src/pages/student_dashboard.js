@@ -89,7 +89,7 @@ const StudentDashboard = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Student Dashboard</h1>
+            <h1 className={styles.title}>Tableau de bord Etudiant - Problèmes soumis</h1>
             {error && <p className={styles.error}>{error}</p>}
             <table className={styles.table}>
                 <thead>

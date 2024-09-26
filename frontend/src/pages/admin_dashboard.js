@@ -229,19 +229,20 @@ const AdminDashboard = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Admin Dashboard - Submitted Problems</h1>
+            <h1 className={styles.title}>
+            Tableau de bord d'administration - Problèmes soumis</h1>
             {error && <p className={styles.error}>{error}</p>}
             <table className={styles.table}>
                 <thead>
                     <tr>
-                        <th>Student</th>
+                        <th>Etudiant</th>
                         <th>Promotion</th>
-                        <th>Room</th>
+                        <th>Salle</th>
                         <th>Category</th>
-                        <th>Type of Problem</th>
+                        <th>Type de probleme</th>
                         <th>Description</th>
-                        <th>Urgency</th>
-                        <th>State</th>
+                        <th>Urgence</th>
+                        <th>Statut</th>
                         <th>Message</th>
                         <th>Action</th>
                     </tr>
@@ -275,7 +276,7 @@ const AdminDashboard = () => {
                                     />
                                 </td>
                                 <td>
-                                    <button onClick={() => handleMessageSubmit(problem)} className="bg-blue-500 text-white px-2 py-1 rounded">Update Message</button>
+                                    <button onClick={() => handleMessageSubmit(problem)} className="bg-blue-500 text-white px-2 py-1 rounded">message</button>
                                 </td>
                             </tr>
                         );

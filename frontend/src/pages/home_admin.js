@@ -8,11 +8,11 @@ const HomeAdmin = () => {
             <div className={styles.logoContainer}>
                 <Image src="/images/Charte_graphique_Workshop_2024-removebg-preview.webp" alt="Logo 1" className={styles.logo} width={150} height={100} />
             </div>
-            <h1 className={styles.title}>Welcome to the Admin Dashboard App</h1>
+            <h1 className={styles.title}>Accueil Admin</h1>
             <div className={styles.buttonContainer}>
                 <Link href="/admin_dashboard">
                     <button className={styles.button}>
-                        Go to Admin Dashboard
+                    Tableau de bord d'administration
                     </button>
                 </Link>
             </div>

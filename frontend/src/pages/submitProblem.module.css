@@ -46,7 +46,7 @@
     width: 100%;
     padding: 0.75rem;
     margin-top: 1rem;
-    background-color: #2563eb;
+    background-color: #D27E7E;
     color: white;
     border: none;
     border-radius: 5px;
@@ -55,5 +55,5 @@
 }
 
 .submitButton:hover {
-    background-color: #1d4ed8;
+    background-color: #c46464;
 }

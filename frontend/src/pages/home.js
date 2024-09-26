@@ -35,12 +35,12 @@ const Home = () => {
             <div className={styles.buttonContainer}>
                 <Link href="/student_dashboard">
                     <button className={styles.button}>
-                        Go to Student Dashboard
+                     Tableau de bord Etudiant
                     </button>
                 </Link>
                 <Link href="/submit_problem">
                     <button className={`${styles.button}`}>
-                        Submit a Problem
+                    Soumettre un problème
                     </button>
                 </Link>
             </div>
