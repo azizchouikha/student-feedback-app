@@ -23,11 +23,15 @@
 // export default Home;
 import Link from 'next/link';
 import styles from './home.module.css';
+import Image from 'next/image';
 
 const Home = () => {
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Welcome to the Student Feedback App</h1>
+            <div className={styles.logoContainer}>
+                <Image src="/images/Charte_graphique_Workshop_2024-removebg-preview.webp" alt="Logo 1" className={styles.logo} width={150} height={100} />
+            </div>
+            <h1 className={styles.title}>Accueil</h1>
             <div className={styles.buttonContainer}>
                 <Link href="/student_dashboard">
                     <button className={styles.button}>
@@ -35,11 +39,25 @@ const Home = () => {
                     </button>
                 </Link>
                 <Link href="/submit_problem">
-                    <button className={`${styles.button} ${styles.buttonGreen}`}>
+                    <button className={`${styles.button}`}>
                         Submit a Problem
                     </button>
                 </Link>
             </div>
+            <Image
+                src="/images/24-removebg-preview.webp"
+                alt="Rectangle Top Right"
+                className={styles.backgroundTopRight}
+                width={1000}
+                height={500}
+            />
+            <Image
+                src="/images/23-removebg-preview.webp"
+                alt="Rectangle Bottom Left"
+                className={styles.backgroundBottomLeft}
+                width={1000}
+                height={500}
+            />
         </div>
     );
 };
