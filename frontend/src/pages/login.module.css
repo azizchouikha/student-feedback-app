@@ -92,3 +92,12 @@
     transform: translate(-40%, 7%);
     opacity: 10; /* Ajustez l'opacité si nécessaire */
 }
+
+.switchModeButton {
+    margin-top: 1rem;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -553,6 +553,41 @@ def login():
         return jsonify({"error": "Invalid credentials"}), 401
 
 
+@app.route('/api/register', methods=['POST'])
+def register():
+    data = request.json
+    email = data.get('email')
+    password = data.get('password')
+    name = data.get('name')
+    surname = data.get('surname')
+    role = data.get('role', 'student')  # Default role is 'student'
+
+    # Validation des champs
+    if not all([email, password, name, surname]):
+        return jsonify({"error": "Tous les champs sont obligatoires"}), 400
+
+    try:
+        curs = mydb.cursor(dictionary=True)
+
+        # Vérifier si l'utilisateur existe déjà
+        curs.execute("SELECT * FROM users WHERE email = %s", (email,))
+        existing_user = curs.fetchone()
+        
+        if existing_user:
+            return jsonify({"error": "Un utilisateur avec cet email existe déjà"}), 400
+        
+        # Insérer le nouvel utilisateur
+        sql = "INSERT INTO users (email, password, name, surname, role) VALUES (%s, %s, %s, %s, %s)"
+        curs.execute(sql, (email, password, name, surname, role))
+        mydb.commit()
+
+        return jsonify({"message": "Compte créé avec succès"}), 201
+    except mysql.connector.Error as err:
+        return jsonify({"error": str(err)}), 500
+    finally:
+        curs.close()
+
+
  
 
 
