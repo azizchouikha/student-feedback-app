@@ -1,0 +1,71 @@
+/* home.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    padding: 2rem;
+}
+
+.logoContainer {
+    position: absolute;
+    top: -30px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 200px; /* Adjust the size as needed */
+    width: 300px;
+    margin-right: 10px; /* Space between the logos */
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 1,5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #D27E7E;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #c46464;
+    transform: translateY(-2px);
+}
+
+.backgroundTopRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(38%, -30%);
+    opacity: 10; /* Ajustez l'opacité si nécessaire */
+}
+
+.backgroundBottomLeft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-40%, 28%);
+    opacity: 10; /* Ajustez l'opacité si nécessaire */
+}

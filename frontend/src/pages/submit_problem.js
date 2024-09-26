@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Router from 'next/router';
+import styles from './submitProblem.module.css';
 
 const SubmitProblem = () => {
     const [formData, setFormData] = useState({
@@ -30,18 +31,126 @@ const SubmitProblem = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-xl font-bold">Submit a Problem</h1>
-            <form onSubmit={handleSubmit} className="mt-4">
-                <input type="text" name="promotion" placeholder="Promotion" onChange={handleChange} required />
-                <input type="text" name="room" placeholder="Room" onChange={handleChange} required />
-                <input type="text" name="category" placeholder="Category" onChange={handleChange} required />
-                <input type="text" name="type_of_problem" placeholder="Type of Problem" onChange={handleChange} required />
-                <textarea name="description" placeholder="Description" onChange={handleChange} required></textarea>
-                <input type="text" name="other" placeholder="Other (optional)" onChange={handleChange} />
-                <input type="text" name="urgency" placeholder="Urgency" onChange={handleChange} required />
-                <textarea name="remark" placeholder="Remark" onChange={handleChange} required></textarea>
-                <button type="submit" className="px-4 py-2 mt-4 text-white bg-blue-500 rounded hover:bg-blue-600">Submit</button>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Soumettre un problème</h1>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                {/* Liste déroulante pour la promotion */}
+                <select
+                    name="promotion"
+                    onChange={handleChange}
+                    required
+                    className={styles.inputField}
+                >
+                    <option value="">Sélectionnez une promotion</option>
+                    <option value="SN1">SN1</option>
+                    <option value="SN2">SN2</option>
+                    <option value="B3FS">B3FS</option>
+                    <option value="B3DS">B3DS</option>
+                    <option value="B3INFRA">B3INFRA</option>
+                    <option value="B3WIS">B3WIS</option>
+                </select>
+
+                {/* Liste déroulante pour la salle */}
+                <select
+                    name="room"
+                    onChange={handleChange}
+                    required
+                    className={styles.inputField}
+                >
+                    <option value="">Sélectionnez une salle</option>
+                    <option value="Salle de classe">Salle de classe (SC)</option>
+                    <option value="Laboratoires informatiques">Laboratoires informatiques</option>
+                    <option value="Salle des serveurs">Salle des serveurs</option>
+                    <option value="Salle de réunion">Salle de réunion</option>
+                    <option value="Salle de conférence">Salle de conférence</option>
+                    <option value="Salle de coworking">Salle de coworking</option>
+                    <option value="Salle des professeurs">Salle des professeurs</option>
+                    <option value="Salle de détente/zone de repos">Salle de détente/zone de repos</option>
+                    <option value="Cafétéria/cantine">Cafétéria/cantine</option>
+                    <option value="Toilette">Toilette</option>
+                    <option value="Autre">Autre</option>
+                </select>
+
+                {/* Liste déroulante pour la catégorie */}
+                <select
+                    name="category"
+                    onChange={handleChange}
+                    required
+                    className={styles.inputField}
+                >
+                    <option value="">Sélectionnez une catégorie</option>
+                    <option value="Technologie et équipement">Technologie et équipement</option>
+                    <option value="Vidéoprojecteurs">Vidéoprojecteurs</option>
+                    <option value="Écrans multimédias">Écrans multimédias</option>
+                    <option value="Ordinateurs et périphériques">Ordinateurs et périphériques</option>
+                    <option value="Climatisation">Climatisation</option>
+                    <option value="Sanitaires">Sanitaires</option>
+                    <option value="Fenêtres">Fenêtres</option>
+                    <option value="Classe">Classe</option>
+                    <option value="Cafétéria">Cafétéria</option>
+                    <option value="Extérieur">Extérieur</option>
+                    <option value="Poubelles">Poubelles</option>
+                    <option value="Électricité">Électricité</option>
+                    <option value="Plomberie">Plomberie</option>
+                    <option value="Sécurité">Sécurité</option>
+                    <option value="Surveillance">Surveillance</option>
+                    <option value="Mobiliers urbains">Mobiliers urbains</option>
+                    <option value="Voies d'accès">Voies d'accès</option>
+                    <option value="Signalisation">Signalisation</option>
+                    <option value="Incivilités">Incivilités</option>
+                    <option value="Alarmes et issues de secours">Alarmes et issues de secours</option>
+                    <option value="Autre">Autre</option>
+                </select>
+
+                <input
+                    type="text"
+                    name="other"
+                    placeholder="Autre (facultatif)"
+                    onChange={handleChange}
+                    className={styles.inputField}
+                />
+
+                <input
+                    type="text"
+                    name="type_of_problem"
+                    placeholder="Type de problème"
+                    onChange={handleChange}
+                    required
+                    className={styles.inputField}
+                />
+
+                <textarea
+                    name="description"
+                    placeholder="Description (Si SC précisez N° de la salle)"
+                    onChange={handleChange}
+                    required
+                    className={styles.textareaField}
+                ></textarea>
+
+                {/* Liste déroulante pour l'urgence */}
+                <select
+                    name="urgency"
+                    onChange={handleChange}
+                    required
+                    className={styles.inputField}
+                >
+                    <option value="">Sélectionnez l'urgence</option>
+                    <option value="1">1 (Faible)</option>
+                    <option value="2">2 (Moyenne)</option>
+                    <option value="3">3 (Élevée)</option>
+                </select>
+
+                <textarea
+                    name="remark"
+                    placeholder="Remarque"
+                    onChange={handleChange}
+                    required
+                    className={styles.textareaField}
+                ></textarea>
+
+                <button type="submit" className={styles.submitButton}>
+                    Valider
+                </button>
             </form>
         </div>
     );
