@@ -23,10 +23,10 @@ const SubmitProblem = () => {
         e.preventDefault();
         try {
             await axios.post('/api/submit_problem', formData);
-            alert('Problem submitted successfully');
+            alert('Problème soumis avec succès');
             Router.push('/home');
         } catch (err) {
-            alert(err.response?.data?.error || 'Failed to submit the problem');
+            alert(err.response?.data?.error || 'Échec de la soumission du problème');
         }
     };
 
@@ -144,7 +144,6 @@ const SubmitProblem = () => {
                     name="remark"
                     placeholder="Remarque"
                     onChange={handleChange}
-                    required
                     className={styles.textareaField}
                 ></textarea>
 

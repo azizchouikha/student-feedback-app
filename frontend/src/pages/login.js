@@ -130,8 +130,8 @@ const Login = () => {
                 Router.push('/home');
             }
         } catch (err) {
-            setError(err.response?.data?.error || 'Unexpected error occurred');
-            console.error('Login failed:', err);
+            setError(err.response?.data?.error || 'Une erreur inattendue s est produite');
+            console.error('La connexion a échoué :', err);
         }
     };
 

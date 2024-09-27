@@ -1,84 +1,25 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-
-// const StudentDashboard = () => {
-//     const [problems, setProblems] = useState([]);
-//     const [error, setError] = useState('');
-
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             try {
-//                 const res = await axios.get('/api/student_dashboard');
-//                 setProblems(res.data.problems || []);
-//             } catch (error) {
-//                 console.error('Error fetching data:', error);
-//                 setError('Failed to fetch data');
-//             }
-//         };
-
-
-//         fetchData();
-//     }, []);
-
-
-//     return (
-//         <div>
-//             <h1>Student Dashboard</h1>
-//             {error && <p>{error}</p>}
-//             <table className="min-w-full divide-y divide-gray-200">
-//                 <thead className="bg-gray-50">
-//                     <tr>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salle</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Catégorie</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Autre</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarque</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Urgence</th>
-//                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Etat</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody className="bg-white divide-y divide-gray-200">
-//                     {problems.map((problem, index) => (
-//                         <tr key={index}>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.room}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.category}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.type_of_problem}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.description}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.other}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.remark}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.urgency}</td>
-//                             <td className="px-6 py-4 whitespace-nowrap">{problem.state}</td>
-//                         </tr>
-//                     ))}
-//                 </tbody>
-//             </table>
-//         </div>
-//     );
-// };
-
-
-// export default StudentDashboard;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';  // Import useRouter for navigation
+import { useRouter } from 'next/router';
 import styles from './dashboard.module.css';
 
 const StudentDashboard = () => {
     const [problems, setProblems] = useState([]);
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     const [error, setError] = useState('');
-    const router = useRouter(); // Use the useRouter hook for navigation
+    const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await axios.get('/api/student_dashboard');
-                setProblems(res.data.problems || []);
+                const sortedProblems = res.data.problems
+                    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                setProblems(sortedProblems);
             } catch (error) {
-                console.error('Error fetching data:', error);
-                setError('Failed to fetch data');
+                console.error('Erreur lors de la récupération des données:', error);
+                setError('Échec de la récupération des données');
             }
         };
 
@@ -86,16 +27,39 @@ const StudentDashboard = () => {
     }, []);
 
     const navigateToAllProblems = () => {
-        router.push('/all_problem');  // Navigate to AllProblem page
+        router.push('/all_problem');
     };
+
+    const filteredProblems = problems.filter(problem => {
+        const createdDate = new Date(problem.created_at);
+        const start = startDate ? new Date(startDate) : null;
+        const end = endDate ? new Date(endDate) : null;
+        return (!start || createdDate >= start) && (!end || createdDate <= end);
+    });
 
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Tableau de bord Étudiant - Problèmes soumis</h1>
+            <div className={styles.filters}>
+                <input
+                    type="date"
+                    value={startDate}
+                    onChange={e => setStartDate(e.target.value)}
+                />
+                <input
+                    type="date"
+                    value={endDate}
+                    onChange={e => setEndDate(e.target.value)}
+                />
+                <button onClick={navigateToAllProblems} className={styles.button}>
+                    Voir tous les problèmes
+                </button>
+            </div>
             {error && <p className={styles.error}>{error}</p>}
             <table className={styles.table}>
                 <thead>
                     <tr>
+                        <th>Date</th>
                         <th>Salle</th>
                         <th>Catégorie</th>
                         <th>Type</th>
@@ -108,8 +72,9 @@ const StudentDashboard = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {problems.map((problem, index) => (
+                    {filteredProblems.map((problem, index) => (
                         <tr key={index}>
+                            <td>{problem.created_at}</td>
                             <td>{problem.room}</td>
                             <td>{problem.category}</td>
                             <td>{problem.type_of_problem}</td>
@@ -123,16 +88,8 @@ const StudentDashboard = () => {
                     ))}
                 </tbody>
             </table>
-            <button onClick={navigateToAllProblems} className={styles.button}>
-                Voir tous les problèmes
-            </button>
         </div>
     );
 };
 
 export default StudentDashboard;
-
-
-
-
-

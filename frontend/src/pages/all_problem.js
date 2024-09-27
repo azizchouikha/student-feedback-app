@@ -12,8 +12,8 @@ const AllProblem = () => {
                 const res = await axios.get('/api/all_problems');
                 setProblems(res.data.problems || []);
             } catch (err) {
-                console.error('Error fetching problems:', err);
-                setError('Failed to fetch problems');
+                console.error('Erreur lors de la récupération des problèmes:', err);
+                setError('Échec de la récupération des problèmes');
             }
         };
 
@@ -39,8 +39,8 @@ const AllProblem = () => {
                 setProblems(updatedProblems);
             }
         } catch (err) {
-            console.error('Error toggling like:', err);
-            alert(err.response?.data?.error || 'Failed to toggle like');
+            console.error('Erreur lors du basculement du like:', err);
+            alert(err.response?.data?.error || 'Échec du basculement du like');
         }
     };
 
@@ -61,8 +61,9 @@ const AllProblem = () => {
                         <div className={styles.likesSection}>
                             <span className={styles.likesCount}>{problem.likes} Likes</span>
                             <button onClick={() => toggleLike(problem)} className={styles.likeButton}>
-                                {problem.isLiked ? 'Dislike' : 'Like'}
+                                {problem.isLiked ? '👎' : '👍'}
                             </button>
+
                         </div>
                     </div>
                 ))}

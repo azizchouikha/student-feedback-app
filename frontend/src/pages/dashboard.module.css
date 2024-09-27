@@ -9,6 +9,15 @@
     min-height: 100vh;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 1rem;
+}
+
 .title {
     font-size: 2rem;
     font-weight: bold;
@@ -55,4 +64,22 @@
 .error {
     color: #e63946;
     margin-bottom: 1rem;
+}
+
+.button {
+    background-color: #D27E7E; /* Same color as the login button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #b56576; /* Slightly darker for hover effect */
 }
