@@ -12,7 +12,7 @@ const HomeAdmin = () => {
             <div className={styles.buttonContainer}>
                 <Link href="/admin_dashboard">
                     <button className={styles.button}>
-                    Tableau de bord d'administration
+                    Tableau de bord d administration
                     </button>
                 </Link>
             </div>

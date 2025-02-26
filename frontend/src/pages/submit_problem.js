@@ -95,7 +95,7 @@ const SubmitProblem = () => {
                     <option value="Sécurité">Sécurité</option>
                     <option value="Surveillance">Surveillance</option>
                     <option value="Mobiliers urbains">Mobiliers urbains</option>
-                    <option value="Voies d'accès">Voies d'accès</option>
+                    <option value="Voies d'accès">Voies d accès</option>
                     <option value="Signalisation">Signalisation</option>
                     <option value="Incivilités">Incivilités</option>
                     <option value="Alarmes et issues de secours">Alarmes et issues de secours</option>
@@ -134,7 +134,7 @@ const SubmitProblem = () => {
                     required
                     className={styles.inputField}
                 >
-                    <option value="">Sélectionnez l'urgence</option>
+                    <option value="">Sélectionnez l urgence</option>
                     <option value="1">1 (Faible)</option>
                     <option value="2">2 (Moyenne)</option>
                     <option value="3">3 (Élevée)</option>

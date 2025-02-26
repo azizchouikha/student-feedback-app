@@ -362,7 +362,7 @@ const AdminDashboard = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Tableau de bord d'administration - Problèmes soumis</h1>
+            <h1 className={styles.title}>Tableau de bord d administration - Problèmes soumis</h1>
             {error && <p className={styles.error}>{error}</p>}
             <div className={styles.filters}>
                 {/* Les filtres sont affichés ici */}

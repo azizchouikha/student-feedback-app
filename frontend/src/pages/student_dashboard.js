@@ -68,7 +68,7 @@ const StudentDashboard = () => {
                         <th>Remarque</th>
                         <th>Urgence</th>
                         <th>État</th>
-                        <th>Message de l'Admin</th>
+                        <th>Message de l Admin</th>
                     </tr>
                 </thead>
                 <tbody>
