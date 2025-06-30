@@ -1,0 +1,144 @@
+/* dashboard.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    background-color: #f7f8fc;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #222;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    max-width: 1600px;
+    border-collapse: collapse;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.table thead {
+    background-color: #eaf1fb; /* Bleu très clair */
+    color: #2563eb; /* Bleu vif pour le texte */
+}
+
+.table th,
+.table td {
+    padding: 16px 20px;
+    text-align: left;
+    vertical-align: top;
+    color: #1a202c; /* Texte foncé */
+    font-size: 1rem;
+}
+
+.table th {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.2s;
+    background: #fff;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.error {
+    color: #e63946;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 2rem;
+}
+
+.noData {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    padding: 2rem;
+    font-style: italic;
+}
+
+.select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f7f8fc;
+    font-size: 0.98rem;
+    min-width: 120px;
+    color: #1a202c;
+    transition: border 0.2s;
+}
+
+.select:focus {
+    border: 1.5px solid #2563eb;
+    outline: none;
+}
+
+.textarea {
+    width: 100%;
+    min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f7f8fc;
+    font-size: 0.98rem;
+    resize: vertical;
+    min-height: 60px;
+    color: #1a202c;
+    transition: border 0.2s;
+}
+
+.textarea:focus {
+    border: 1.5px solid #2563eb;
+    outline: none;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px rgba(37,99,235,0.08);
+}
+
+.button:hover {
+    background-color: #1749b1;
+}
+
+.button:disabled {
+    background-color: #b3c6f7;
+    cursor: not-allowed;
+}

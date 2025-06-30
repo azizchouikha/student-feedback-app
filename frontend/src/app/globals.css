@@ -3,25 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #fff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #2563eb;
+  --accent: #a5b4fc;
+  --danger: #ef4444;
+  --danger-foreground: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #60a5fa;
+    --primary-foreground: #171717;
+    --secondary: #1e293b;
+    --secondary-foreground: #60a5fa;
+    --accent: #818cf8;
+    --danger: #f87171;
+    --danger-foreground: #171717;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Geist', 'Inter', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+input, textarea, select {
+  color: #111 !important;
+  background: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-family: 'Geist', 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
 }
